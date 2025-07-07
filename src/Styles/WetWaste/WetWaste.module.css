@@ -1,0 +1,130 @@
+.container{
+    height: calc(100vh - 10px);
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+/* Circle Style */
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 10px solid #00A36C;
+
+  display: flex;              /* Center text */
+  align-items: center;
+  justify-content:center;
+
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+
+/* Center Wrapper */
+.centerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* ← Centers all child items horizontally */
+  justify-content: top;
+  margin: 20px 0;
+  text-align: center;        /* ← Ensures text inside items is centered too */
+}
+
+.circleText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.kgLabel {
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+}
+
+.kgValue {
+  font-size: 25px;
+  font-weight: bold;
+  color: #097969;
+  margin-bottom: 30px;
+}
+
+.inputContainer {
+  margin-top: 16px;
+  width: 100%;
+  max-width: 300px;
+  text-align: left;
+}
+
+.label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #097969;
+  display: block;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2.5px solid #00A36C;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.inputBox:focus {
+  border-color: #065f52;
+  box-shadow: 0 0 3px rgba(9, 121, 105, 0.5);
+}
+.buttonContainer {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  z-index: 999;
+}
+
+.button {
+  padding: 10px 34px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+}
+
+.buttonPrimary {
+  padding: 10px 64px;
+  border: none;
+  border-radius: 6px;
+  background-color: #00A36C;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonPrimary:hover {
+  background-color: #065f52;
+}
+
+.icon {
+  margin-right: 20px;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
