@@ -5,6 +5,7 @@ import Wastetype from '../../Components/WasteType/Wastetype'
 import MarkSegregation from '../../Components/MarkSegregation/MarkSegregation'
 import DrumWeight from '../../Components/DrumWeight/DrumWeight'
 import WetWaste from '../../Components/WetWaste/WetWaste'
+import { Alert } from 'bootstrap'
 
 
 const Bulkgenerator = () => {
@@ -12,11 +13,11 @@ const Bulkgenerator = () => {
   const [houseId, setHouseId] = useState(null);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const houseIdFromUrl = queryParams.get("houseId");
-    setHouseId(houseIdFromUrl);
-    console.log('houseId', houseIdFromUrl)
-    alert(houseIdFromUrl)
+    window.receiveMessage = (message) => {
+      console.log("Message from Android:", message);
+      setHouseId(message);
+    };
+
   }, []);
 
   return (
