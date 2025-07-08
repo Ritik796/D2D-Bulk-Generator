@@ -1,28 +1,32 @@
-import React from 'react'
-import Header from '../../Components/Common/Header/Header'
-import style from '../../Styles/WetWaste/WetWaste.module.css'
-import { FaTimes, FaCheck, FaCheckCircle } from 'react-icons/fa' // Font Awesome icons
-import { FaCartPlus, FaTrash } from 'react-icons/fa6'
-import { useNavigate } from 'react-router-dom';
+import  { useEffect, useState } from 'react';
+import style from '../../Styles/WetWaste/WetWaste.module.css';
+import {  FaCheckCircle } from 'react-icons/fa'; // Font Awesome icons
+import { FaCartPlus } from 'react-icons/fa6';
+import * as action from '../../Action/Bullkgenerator/WetWasteAction'
 
-const WetWaste = () => {
 
-    const navigate = useNavigate();
+const WetWaste = ({pageData,setPageData}) => {
+const [weight,setWeight] = useState('');
 
-    const handleSubmit = () => {
-        navigate('/drum'); // 👈 navigate to NextScreen
-    };
-
+useEffect(()=>{
+if (pageData.data) {
+    action.setData(pageData.data,setWeight)
+}
+// eslint-disable-next-line
+},[pageData.data])
+const handleChange = (value)=>{
+    action.handleOnChange(value,setWeight)
+}
+const handleNext  =()=>{
+    action.handleNext(weight,setPageData)
+}
 
     return (
         <div className={`${style.container}`}>
-            <div>
-                <Header title={"Wet Waste"} />
-            </div>
             <div className={`${style.centerWrapper}`}>
                 <div className={style.circle}>
                     <div className={style.circleText}>
-                        <span className={style.kgValue}>0</span>
+                        <span className={style.kgValue}>{weight?weight:'0'}</span>
                         <span className={style.kgLabel}>Kilogram</span>
                     </div>
                 </div>
@@ -32,6 +36,8 @@ const WetWaste = () => {
                         type="number"
                         placeholder="Enter weight"
                         className={style.inputBox}
+                        value={weight}
+                        onChange={(e)=>handleChange(e.target.value)}
                     />
                 </div>
 
@@ -40,7 +46,7 @@ const WetWaste = () => {
                         <FaCartPlus className={style.icon} />
                         Add bin
                     </button>
-                    <button className={style.buttonPrimary} onClick={handleSubmit}>
+                    <button className={style.buttonPrimary} onClick={handleNext} >
                         <FaCheckCircle className={style.icon} />
                         Done
                     </button>
