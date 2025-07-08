@@ -1,19 +1,22 @@
-.container{
-    height: calc(100vh - 10px);
-    display: grid;
-    grid-template-rows: auto 1fr;
+.container {
+  height: calc(100vh - 70px);
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
+
 /* Circle Style */
 .circle {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: #ffffff;
-  border: 10px solid #00A36C;
+  border: 15px solid #00A36C;
 
-  display: flex;              /* Center text */
+  display: flex;
+  /* Center text */
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 
   font-weight: bold;
   font-size: 16px;
@@ -24,10 +27,12 @@
 .centerWrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* ← Centers all child items horizontally */
+  align-items: center;
+  /* ← Centers all child items horizontally */
   justify-content: top;
   margin: 20px 0;
-  text-align: center;        /* ← Ensures text inside items is centered too */
+  text-align: center;
+  /* ← Ensures text inside items is centered too */
 }
 
 .circleText {
@@ -81,19 +86,16 @@
   border-color: #065f52;
   box-shadow: 0 0 3px rgba(9, 121, 105, 0.5);
 }
+
 .buttonContainer {
-  position: fixed;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
+  display: grid;
+ grid-template-columns: 1fr 1fr;
+  gap: 5px;
   z-index: 999;
 }
 
 .button {
-  padding: 10px 34px;
+  padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #f0f0f0;
@@ -101,6 +103,10 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .button:hover {
@@ -108,10 +114,10 @@
 }
 
 .buttonPrimary {
-  padding: 10px 64px;
+  padding: 10px 15px;
   border: none;
   border-radius: 6px;
-  background-color: #00A36C;
+  background-color: #059705;
   color: #fff;
   font-size: 16px;
   cursor: pointer;

@@ -8,6 +8,7 @@ import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction'
 
 const MarkSegregation = ({ pageData, setPageData }) => {
     const [segregationType, setSegregationType] = useState('');
+    const [segregationDetails,setSegregationDetails] = useState({totalWeight:'',drumWeight:"",wasteWeight:""})
     useEffect(() => {
         if (pageData.data) {
             handleSetData(pageData.data)
@@ -15,7 +16,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
         // eslint-disable-next-line
     }, [pageData.data]);
     const handleSetData = (data)=>{
-        action.setData(data,setSegregationType)
+        action.setData(data,setSegregationType,setSegregationDetails)
     }
     const handleClick = (value) => {
         action.markSegregationType(value,setSegregationType,setPageData); // toggle on each click
@@ -33,7 +34,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                             <FiTrash2 className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
-                            <span>15</span>
+                            <span>{segregationDetails?.totalWeight||'0'}</span>
                         </div>
                         <div className={`${style.dustBinText}`}>
                             <span>Total Weight</span>
@@ -44,7 +45,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                             <FiTrash className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
-                            <span>1</span>
+                            <span>{segregationDetails?.drumWeight||"0"}</span>
                         </div>
                         <div className={`${style.dustBinText}`}>
                             <span>Drum Weight</span>
@@ -55,7 +56,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                             <FiTrash2 className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
-                            <span>14</span>
+                            <span>{segregationDetails?.wasteWeight||'0'}</span>
                         </div>
                         <div className={`${style.dustBinText}`}>
                             <span>Waste Weight</span>

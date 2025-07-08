@@ -40,8 +40,8 @@ const handleNext  =()=>{
                         onChange={(e)=>handleChange(e.target.value)}
                     />
                 </div>
-
-                <div className={style.buttonContainer}>
+            </div>
+             <div className={style.buttonContainer}>
                     <button className={style.button}>
                         <FaCartPlus className={style.icon} />
                         Add bin
@@ -51,8 +51,6 @@ const handleNext  =()=>{
                         Done
                     </button>
                 </div>
-
-            </div>
         </div>
     )
 }

@@ -104,6 +104,9 @@
     gap: 10px;
 }
 
+.segregation_btn button:hover {
+  background-color: #065f52;
+}
 .segregation_options {
     display: grid;
     grid-template-columns: auto auto auto;
