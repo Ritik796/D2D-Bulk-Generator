@@ -3,7 +3,7 @@
   padding: 10px;
   display: grid;
   grid-template-rows: 1fr auto;
-   overflow-y: auto;
+  overflow-y: auto;
 }
 
 /* Circle Style */
@@ -90,7 +90,7 @@
 
 .buttonContainer {
   display: grid;
- grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 5px;
   z-index: 999;
 }
@@ -108,6 +108,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+
 }
 
 .button:hover {
@@ -115,13 +116,19 @@
 }
 
 .buttonPrimary {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
   background-color: #059705;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  color: white;
+  font-size: 19px;
+  outline: none;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
   transition: background-color 0.3s ease;
 }
 
@@ -130,7 +137,7 @@
 }
 
 .icon {
-  margin-right: 20px;
+  margin-right: 0px;
   font-size: 16px;
   display: inline-block;
   vertical-align: middle;

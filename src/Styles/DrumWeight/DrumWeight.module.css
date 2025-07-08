@@ -68,16 +68,12 @@
 }
 
 .buttonContainer {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
-    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.button {
+/* .button {
     padding: 10px 34px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -86,29 +82,25 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+} */
 
 .button:hover {
     background-color: #e0e0e0;
 }
 
 .buttonPrimary {
-    width: 100%;
-    /* 👈 make button span full width of container */
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
     background-color: #059705;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 8px;
+    width: 95%;
+    border-radius: 10px;
+    color: white;
+    font-size: 19px;
+    outline: none;
+    border: 1px solid #ccc;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 10px;
-    margin-right: 10px;
+    gap: 10px;
 }
 
 
@@ -117,7 +109,7 @@
 }
 
 .icon {
-    margin-right: 20px;
+    margin-right: 0px;
     font-size: 16px;
     display: inline-block;
     vertical-align: middle;
