@@ -3,6 +3,7 @@
     height: calc(100vh - 70px);
     grid-template-rows: 1fr auto;
     padding: 10px;
+     overflow-y: auto;
 }
 
 .labelWithIcon {

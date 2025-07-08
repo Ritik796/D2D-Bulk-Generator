@@ -8,24 +8,24 @@ import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction'
 
 const MarkSegregation = ({ pageData, setPageData }) => {
     const [segregationType, setSegregationType] = useState('');
-    const [segregationDetails,setSegregationDetails] = useState({totalWeight:'',drumWeight:"",wasteWeight:""})
+    const [segregationDetails, setSegregationDetails] = useState({ totalWeight: '', drumWeight: "", wasteWeight: "" })
     useEffect(() => {
         if (pageData.data) {
             handleSetData(pageData.data)
         }
         // eslint-disable-next-line
     }, [pageData.data]);
-    const handleSetData = (data)=>{
-        action.setData(data,setSegregationType,setSegregationDetails)
+    const handleSetData = (data) => {
+        action.setData(data, setSegregationType, setSegregationDetails)
     }
     const handleClick = (value) => {
-        action.markSegregationType(value,setSegregationType,setPageData); // toggle on each click
+        action.markSegregationType(value, setSegregationType, setPageData); // toggle on each click
     };
     return (
         <div className={`${style.container}`}>
             <div className={`${style.weight}`}>
                 <div className={`${style.weightSummary}`}>
-                    <div> Total Weight - Drum Weight  = Waste Weight</div>
+                    <div> <span style={{fontSize:"14px",marginLeft:"10px"}}>Total Weight - Drum Weight  = Waste Weight</span></div>
                     <div className={`${style.weightUnit}`}>Kg</div>
                 </div>
                 <div className={`${style.dustBin}`}>
@@ -34,7 +34,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                             <FiTrash2 className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
-                            <span>{segregationDetails?.totalWeight||'0'}</span>
+                            <span>{segregationDetails?.totalWeight || '0'}</span>
                         </div>
                         <div className={`${style.dustBinText}`}>
                             <span>Total Weight</span>
@@ -45,7 +45,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                             <FiTrash className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
-                            <span>{segregationDetails?.drumWeight||"0"}</span>
+                            <span>{segregationDetails?.drumWeight || "0"}</span>
                         </div>
                         <div className={`${style.dustBinText}`}>
                             <span>Drum Weight</span>
@@ -56,7 +56,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                             <FiTrash2 className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
-                            <span>{segregationDetails?.wasteWeight||'0'}</span>
+                            <span>{segregationDetails?.wasteWeight || '0'}</span>
                         </div>
                         <div className={`${style.dustBinText}`}>
                             <span>Waste Weight</span>
