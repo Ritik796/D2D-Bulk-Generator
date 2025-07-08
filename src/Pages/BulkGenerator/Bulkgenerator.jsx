@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import style from '../../Styles/BulkGenerator/BulkGenerator.module.css'
 import Header from '../../Components/Common/Header/Header'
 import Wastetype from '../../Components/WasteType/Wastetype'
@@ -9,10 +9,20 @@ import WetWaste from '../../Components/WetWaste/WetWaste'
 
 const Bulkgenerator = () => {
   const [pageData, setPageData] = useState({ title: "Waste Type", wasteType: true, wasteWeight: false, drumWeight: false, segregation: false, data: {} })
+  const [houseId, setHouseId] = useState(null);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const houseIdFromUrl = queryParams.get("houseId");
+    setHouseId(houseIdFromUrl);
+    console.log('houseId', houseIdFromUrl)
+    alert(houseIdFromUrl)
+  }, []);
+
   return (
     <div className={`${style.container}`}>
       <div>
-        <Header title={pageData.title} setPageData={setPageData}/>
+        <Header title={pageData.title} setPageData={setPageData} />
       </div>
       <div>
         {pageData.wasteType ? (
