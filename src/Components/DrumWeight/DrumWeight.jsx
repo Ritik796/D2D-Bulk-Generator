@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import style from '../../Styles/DrumWeight/DrumWeight.module.css';
-import { FaTint, FaCheckCircle } from 'react-icons/fa';
-import { FiTrash2 } from "react-icons/fi";
+import { FaCheckCircle } from 'react-icons/fa';
+import { GoTrash } from "react-icons/go";
 import { FaWeightScale } from 'react-icons/fa6';
 import * as action from '../../Action/Bullkgenerator/DrumWeightAction';
 
@@ -48,7 +48,7 @@ const DrumWeight = ({ pageData, setPageData }) => {
                 </div>
 
                 <label className={style.labelWithIcon}>
-                    <FiTrash2 className={style.labelIcon} />
+                    <GoTrash className={style.labelIcon} />
                     Enter Drum Weight (kg)
                     <input
                         type="number"

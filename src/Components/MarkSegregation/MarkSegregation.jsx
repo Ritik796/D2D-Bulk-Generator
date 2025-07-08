@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { FiTrash2, FiTrash } from "react-icons/fi";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FaCheckCircle } from 'react-icons/fa';
+import { GoTrash } from "react-icons/go";
+import { IoTrashOutline } from "react-icons/io5";
 import { GoCheck } from "react-icons/go";
 import style from '../../Styles/MarkSegregation/MarkSegregation.module.css';
 import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction'
@@ -31,7 +32,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                 <div className={`${style.dustBin}`}>
                     <div className={`${style.dustBinItems}`}>
                         <div >
-                            <FiTrash2 className={`${style.dustBinIcon}`} size={30} />
+                            <IoTrashOutline className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
                             <span>{segregationDetails?.totalWeight || '0'}</span>
@@ -42,7 +43,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                     </div>
                     <div className={`${style.dustBinItems}`}>
                         <div >
-                            <FiTrash className={`${style.dustBinIcon}`} size={30} />
+                            <GoTrash className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
                             <span>{segregationDetails?.drumWeight || "0"}</span>
@@ -53,7 +54,7 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                     </div>
                     <div className={`${style.dustBinItems}`}>
                         <div >
-                            <FiTrash2 className={`${style.dustBinIcon}`} size={30} />
+                            <IoTrashOutline className={`${style.dustBinIcon}`} size={30} />
                         </div>
                         <div className={`${style.dustBinCount}`}>
                             <span>{segregationDetails?.wasteWeight || '0'}</span>

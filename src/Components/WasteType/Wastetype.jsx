@@ -24,21 +24,21 @@ const Wastetype = (props) => {
             <div className={`${style.wasteTypeContainer}`}>
                 <div className={`${style.wasteType}`}>
                     <div className={`${style.wasteTypeItem} ${selectedWasteType?.trim() === 'Wet Waste' ? style.selectedWasteType : ""}`} onClick={()=>handleSelectWasteType(' Wet Waste')}>
-                        <img src={images.wetWaste} className={`${style.wetWasteImg}`} />
+                        <img src={images.wetWaste} className={`${style.wetWasteImg}`} alt='' />
                         Wet Waste
                     </div>
                     <div className={`${style.wasteTypeItem} ${selectedWasteType?.trim() === 'Dry Waste' ? style.selectedWasteType : ""}`} onClick={()=>handleSelectWasteType('Dry Waste')}>
-                        <img src={images.dryWaste} className={`${style.wetWasteImg}`} />
+                        <img src={images.dryWaste} className={`${style.wetWasteImg}`} alt='' />
                         Dry Waste
                     </div>
                 </div>
                 <div className={`${style.wasteType}`}>
                     <div className={`${style.wasteTypeItem} ${selectedWasteType?.trim() === 'Reject Waste' ? style.selectedWasteType : ""}`} onClick={()=>handleSelectWasteType(' Reject Waste')}>
-                        <img src={images.rejectedWaste} className={`${style.wetWasteImg}`} />
+                        <img src={images.rejectedWaste} className={`${style.wetWasteImg}`} alt='' />
                         Reject Waste
                     </div>
                     <div className={`${style.wasteTypeItem} ${selectedWasteType?.trim() === 'Garden Waste' ? style.selectedWasteType : ""}`} onClick={()=>handleSelectWasteType(' Garden Waste ')}>
-                        <img src={images.gardenWaste} className={`${style.wetWasteImg}`} />
+                        <img src={images.gardenWaste} className={`${style.wetWasteImg}`} alt='' />
                         Garden Waste
                     </div>
                 </div>
