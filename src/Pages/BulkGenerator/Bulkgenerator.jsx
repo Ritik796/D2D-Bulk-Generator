@@ -12,13 +12,15 @@ const Bulkgenerator = () => {
   const [pageData, setPageData] = useState({ title: "Waste Type", wasteType: true, wasteWeight: false, drumWeight: false, segregation: false, data: {} })
   const [houseId, setHouseId] = useState(null);
 
-  useEffect(() => {
-    window.receiveMessage = (message) => {
-      console.log("Message from Android:", message);
-      setHouseId(message);
-    };
+  // useEffect(() => {
+  //   window.receiveMessage = (message) => {
+  //     console.log("Message from Android:", message);
+  //     // localStorage.setItem('houseId',message)
+  //     // localStorage.setItem('city','Test')
+  //     setHouseId(message);
+  //   };
 
-  }, []);
+  // }, []);
 
   return (
     <div className={`${style.container}`}>

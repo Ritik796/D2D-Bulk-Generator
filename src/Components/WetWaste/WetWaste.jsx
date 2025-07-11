@@ -3,7 +3,8 @@ import style from '../../Styles/WetWaste/WetWaste.module.css';
 import {  FaCheckCircle } from 'react-icons/fa'; // Font Awesome icons
 import { FaCartPlus } from 'react-icons/fa6';
 import * as action from '../../Action/Bullkgenerator/WetWasteAction'
-
+import * as common from '../Common/commonservice'
+import { ToastContainer } from "react-toastify";
 
 const WetWaste = ({pageData,setPageData}) => {
 const [weight,setWeight] = useState('');
@@ -18,6 +19,13 @@ const handleChange = (value)=>{
     action.handleOnChange(value,setWeight)
 }
 const handleNext  =()=>{
+
+    if (!weight || isNaN(weight)) {
+        console.log('alert')
+        common.setAlertMessage("error","Please enter a valid weight greater than 0.");
+        return;
+    }
+
     action.handleNext(weight,setPageData)
 }
 
@@ -51,6 +59,7 @@ const handleNext  =()=>{
                         Done
                     </button>
                 </div>
+                <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
     )
 }

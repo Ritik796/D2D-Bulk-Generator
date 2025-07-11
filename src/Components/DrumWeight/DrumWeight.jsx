@@ -4,6 +4,8 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { GoTrash } from "react-icons/go";
 import { FaWeightScale } from 'react-icons/fa6';
 import * as action from '../../Action/Bullkgenerator/DrumWeightAction';
+import * as common from '../Common/commonservice'
+import { ToastContainer } from "react-toastify";
 
 const DrumWeight = ({ pageData, setPageData }) => {
     const [weight, setWeight] = useState(0);
@@ -20,13 +22,20 @@ const DrumWeight = ({ pageData, setPageData }) => {
     const increase = () => {
 
         setWeight(prev => Number(prev) + 1);
-      
+
     };
     const decrease = () => {
         setWeight(prev => Math.max(Number(prev) - 1, 0));
     };
     const handleNext = () => {
-        action.handleNext(weight,drumWeight, setPageData)
+
+        if (!drumWeight || isNaN(drumWeight)) {
+            console.log('alert')
+            common.setAlertMessage("error", "Please enter a valid drum weight greater than 0.");
+            return;
+        }
+
+        action.handleNext(weight, drumWeight, setPageData)
     }
     return (
         <div className={style.container}>
@@ -68,6 +77,7 @@ const DrumWeight = ({ pageData, setPageData }) => {
                     Done
                 </button>
             </div>
+            <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
     );
 };

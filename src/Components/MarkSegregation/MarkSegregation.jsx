@@ -6,6 +6,9 @@ import { IoTrashOutline } from "react-icons/io5";
 import { GoCheck } from "react-icons/go";
 import style from '../../Styles/MarkSegregation/MarkSegregation.module.css';
 import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction'
+import * as common from '../Common/commonservice'
+import { ToastContainer } from "react-toastify";
+import * as bwgDetailSubmit from '../../Services/bwgDeatilSubmit'
 
 const MarkSegregation = ({ pageData, setPageData }) => {
     const [segregationType, setSegregationType] = useState('');
@@ -22,11 +25,45 @@ const MarkSegregation = ({ pageData, setPageData }) => {
     const handleClick = (value) => {
         action.markSegregationType(value, setSegregationType, setPageData); // toggle on each click
     };
+
+    const handleDone = () => {
+        if (!segregationType || segregationType.trim() === "") {
+            common.setAlertMessage("error", "Please select a segregation level.");
+            return;
+        }
+        console.log(segregationDetails.drumWeight)
+        // const houseId = localStorage.getItem('houseId');
+        // Android.sendDataToAndroid(houseId);
+        const payload = JSON.stringify({
+            wasteWeight: segregationDetails.wasteWeight,
+            drumWeight: segregationDetails.drumWeight,
+            totalWeight: segregationDetails.totalWeight,
+            wasteType : pageData.data.wasteType,
+            type: segregationType
+        });
+
+        if (window.Android?.sendDataToAndroid) {
+            window.Android.sendDataToAndroid(payload);
+        } else {
+            console.warn("Android bridge not available");
+        }
+
+        // if (window.Android?.sendDataToAndroid) {
+
+        //     window.Android.sendDataToAndroid(segregationDetails.wasteWeight, segregationDetails.drumWeight, segregationDetails.totalWeight, segregationType);
+        // } else {
+        //     console.warn("Android bridge not found");
+        // }
+        // bwgDetailSubmit.submitBWGDetails(houseId,segregationDetails.totalWeight,segregationDetails.drumWeight,segregationDetails.wasteWeight,segregationType)
+        // Proceed with your logic if selection is valid
+        // action.handleNext(segregationType, setPageData);
+    };
+
     return (
         <div className={`${style.container}`}>
             <div className={`${style.weight}`}>
                 <div className={`${style.weightSummary}`}>
-                    <div> <span style={{fontSize:"14px",marginLeft:"10px"}}>Total Weight - Drum Weight  = Waste Weight</span></div>
+                    <div> <span style={{ fontSize: "14px", marginLeft: "10px" }}>Total Weight - Drum Weight  = Waste Weight</span></div>
                     <div className={`${style.weightUnit}`}>Kg</div>
                 </div>
                 <div className={`${style.dustBin}`}>
@@ -108,11 +145,12 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                     </div>
                 </div>
                 <div className={`${style.segregation_btn}`}>
-                    <button>
+                    <button onClick={handleDone}>
                         <FaCheckCircle className={style.icon} />
                         Done</button>
                 </div>
             </div>
+            <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
     )
 }
