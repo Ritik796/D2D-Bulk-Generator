@@ -18,6 +18,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-top: 10px;
+    position: relative;
 }
 .wasteTypeItem {
     display: flex;
@@ -69,4 +70,26 @@
     width: 40px;
     /* height: 22px; */
     margin-bottom: 10px;
+}
+
+.wasteDiv{
+ display: inline-flex;
+  align-items: flex-end; /* aligns unit to bottom */
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 5px;
+  position: relative;
+}
+.wasteValue{
+  line-height: 1;
+  color: #059705;
+  font-size: 18px;
+}
+.wasteUnit{
+  font-size: 15px;
+  margin-left: 0px;
+  line-height: 1;
+  position: relative;
+  bottom: -1px; /* push unit downward slightly */
+  color: #059705;
 }

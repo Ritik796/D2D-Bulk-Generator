@@ -19,7 +19,7 @@ export const uploadFileToStorage = async (imageUri, filepath) => {
         "state_changed",
         (snapshot) => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log(`Upload is ${progress}% done`);
+      
         },
         (error) => {
           console.error("Upload failed:", error);
@@ -29,7 +29,6 @@ export const uploadFileToStorage = async (imageUri, filepath) => {
           try {
             // ✅ Correct way to get download URL
             const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
-            console.log("File available at:", downloadUrl);
             return resolve({ status: "success", url: downloadUrl });
           } catch (error) {
             console.error("Error getting download URL:", error);

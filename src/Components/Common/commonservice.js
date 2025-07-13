@@ -2,9 +2,7 @@ import { toast } from "react-toastify";
 import moment from "moment/moment";
 
 export const setAlertMessage = (type, message) => {
-  console.log('alert',type +" "+ message)
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  console.log()
   const commonOptions = {
     position: isMobile ? "bottom-center" : "bottom-right",
     style: {
@@ -22,7 +20,6 @@ export const setAlertMessage = (type, message) => {
   };
 
   if (type === "error") {
-    console.log('kii')
     toast.error(message, commonOptions);
   } else if (type === "warn") {
     toast.warn(message, commonOptions);

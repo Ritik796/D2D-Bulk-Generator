@@ -97,7 +97,7 @@
 
 .button {
   padding: 10px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #f0f0f0;
   border-radius: 6px;
   background-color: #f0f0f0;
   color: #333;
@@ -111,9 +111,13 @@
   gap: 10px;
 
 }
-
+.disabledBtn{
+  background-color: #f0f0f0 !important;
+   border: 1px solid #f0f0f0 !important;
+}
 .button:hover {
   background-color: #e0e0e0;
+  
 }
 
 .buttonPrimary {
@@ -124,7 +128,7 @@
   color: white;
   font-size: 19px;
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid #059705;
   display: flex;
   align-items: center;
   justify-content: center;

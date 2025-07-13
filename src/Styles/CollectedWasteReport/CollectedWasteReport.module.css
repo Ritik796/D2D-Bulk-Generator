@@ -1,0 +1,247 @@
+.container {
+  display: grid;
+  height: calc(100vh - 70px);
+  grid-template-rows: auto 1fr;
+  gap: 0px;
+  padding: 0px 0px;
+  background-color: #008b5c;
+  overflow-y: auto;
+}
+
+.wasteCollectCon{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 30px 5px;
+}
+.binSummary{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items: center;
+
+  gap: 10px;
+}
+.binSummaryDiv{
+  display: flex;
+  flex-direction: column;
+}
+.binSummaryIcon{
+  background-color: #bbbbbb66;
+  border-radius: 50%;
+  color: #f5f3f3;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+.binSummary_Text{
+  font-size: 18px;
+  color: #f5f3f3;
+}
+.binSummary_Time{
+  font-size: 15px;
+  color: #f5f3f3;
+}
+.binSummaryDivValue {
+  display: inline-flex;
+  align-items: flex-end; /* aligns unit to bottom */
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  padding-right: 5px;
+}
+
+.binSummaryValue {
+  line-height: 1;
+  color: #f5f3f3;
+  font-size: 25px;
+}
+
+.binSummaryValue_unit {
+  font-size: 16px;
+  margin-left: 2px;
+  line-height: 1;
+  position: relative;
+  bottom: 1px; /* push unit downward slightly */
+  color: #f5f3f3;
+}
+.wasteCollectOverView{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow-y: auto;
+}
+.overview_head{
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px rgb(0, 0, 0,0.1);
+}
+.overview_head_Icon{
+  background-color:#bbbbbb34 ;
+  border-radius: 50%;
+  padding: 6px;
+}
+.overview_head_Text{
+    font-size: 18px;
+    color: #6d6d6d;
+}
+.overviewContainer{
+  overflow-y: auto;
+  height: calc(100vh - 340px);
+  padding: 5px;
+
+}
+.listCard{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid #bbbbbb34;
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+}
+.cardImgContainer{
+  background-color: #bbbbbb34;
+  border-radius: 50%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+}
+.cardDetailsCon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+.cardDetails_head{
+  font-size: 18px;
+  font-weight: 500;
+  color: rgb(61, 61, 61);
+}
+.cardDusBin{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cardDusBin_item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.binWeightCon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.binWeight{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.binDiv{
+  display: inline-flex;
+  align-items: flex-end; /* aligns unit to bottom */
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  padding-right: 5px;
+}
+.binValue{
+  line-height: 1;
+  color: #059705;
+  font-size: 20px;
+}
+.binUnit{
+  font-size: 15px;
+  margin-left: 0px;
+  line-height: 1;
+  position: relative;
+  bottom: -1px; /* push unit downward slightly */
+  color: #059705;
+}
+.binStatusDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+/* .binPartial{
+  background-color: #ffa50020;
+  color: #ffa500;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 145px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/* .binMixed{
+  background-color: #d4131320;
+  color: #d41313;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 145px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.binStatus{
+  background-color: #05970520;
+  color: #059705;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 145px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wasteBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+.wasteBtn button {
+    background-color: #059705;
+    padding: 8px;
+    width: 95%;
+    border-radius: 10px;
+    color: white;
+    font-size: 19px;
+    outline: none;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.wasteBtn button:hover {
+  background-color: #065f52;
+}

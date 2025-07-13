@@ -2,7 +2,7 @@
     display: grid;
     height: calc(100vh - 70px);
     grid-template-rows: auto 1fr;
-    gap: 5px;
+    gap: 0px;
     padding: 0px 0px;
     background-color: #008b5c;
     overflow-y: auto;
@@ -71,7 +71,7 @@
 
 .segregation_head_text {
     font-size: 18px;
-    color: rgb(109, 109, 109);
+    color: #6d6d6d;
 }
 
 .segregation_head_Icon {
@@ -89,7 +89,10 @@
     justify-content: center;
     align-items: center;
 }
-
+.disabledBtn{
+  background-color: #f0f0f0 !important;
+   border: 1px solid #f0f0f0 !important;
+}
 .segregation_btn button {
     background-color: #059705;
     padding: 8px;

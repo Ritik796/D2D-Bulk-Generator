@@ -30,7 +30,6 @@ const DrumWeight = ({ pageData, setPageData }) => {
     const handleNext = () => {
 
         if (!drumWeight || isNaN(drumWeight)) {
-            console.log('alert')
             common.setAlertMessage("error", "Please enter a valid drum weight greater than 0.");
             return;
         }

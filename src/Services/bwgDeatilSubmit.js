@@ -22,9 +22,9 @@ export const submitBWGDetails = async (houseId, totalWeight, drumWeight, wasteWe
         db.saveData(path, bwgData).then(async (response) => {
             // console.log(response);
             if (response == "success") {
-                console.log(response);
+                
             } else {
-                console.log(response);
+             
                 // return resolve("failed");
             }
         });

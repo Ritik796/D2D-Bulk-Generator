@@ -1,9 +1,9 @@
-export const handleOnChange = (value, setWeight) => {
+import * as common from '../../Components/Common/commonservice';
+export const handleOnChange = (value, setWeight, setBinAdded) => {
     setWeight(value);
+};
 
-}
-
-export const handleNext = (weight,setPageData) => {
+export const handleNext = (weight, setPageData) => {
     setPageData((pre) => {
         let obj = { ...pre };
         obj.data['wasteWeight'] = weight;
@@ -11,10 +11,31 @@ export const handleNext = (weight,setPageData) => {
         obj.drumWeight = true;
         obj.segregation = false;
         obj.wasteWeight = false;
-        return obj
-    })
-}
+        return obj;
+    });
 
-export const setData =(data,setWeight)=>{
-    setWeight(data?.wasteWeight||"")
-}
+};
+
+export const setData = (data, setWeight, setBinAdded) => {
+    setWeight(data?.wasteWeight || "");
+    setBinAdded(data?.wasteWeight ? true : false);
+};
+
+export const addBin = (weight, collectorWasteReport, setBinAdded, setPageData,data) => {
+    if (!weight) {
+        common.setAlertMessage('error', 'Please enter a valid weight greater than 0.');
+        return;
+    }
+    if (data.binId) {
+        setBinAdded(true);
+        return
+    }
+    let binId = collectorWasteReport?.list?.length > 0 ? `Bin-${collectorWasteReport?.list?.length + 1}` : 'Bin-1';
+    setPageData(pre=>{
+        let obj = {...pre};
+        obj.data['binId'] = binId;
+        return obj;
+    })
+    setBinAdded(true);
+
+};

@@ -1,0 +1,142 @@
+/* Overlay fade in/out */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out forwards;
+}
+.overlay[data-state='closed'] {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Bottom sheet animation */
+.content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  height: 50%;
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+.content[data-state='closed'] {
+  animation: slideDown 0.3s ease-in forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Other styles remain same */
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.text {
+  color: #4b5563; /* gray-600 */
+}
+
+.button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.contentDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  gap: 20px;
+}
+
+.msgContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.msgIcon {
+  background-color: #059705;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.msgText {
+  color: grey;
+  font-size: 18px;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn button {
+  padding: 15px;
+  width: 80%;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #059705;
+  background-color: #059705;
+  color: white;
+  position: relative;
+  font-size: 18px;
+}
+
+.selectedBtn {
+  border: 2px solid #059705 !important;
+  background-color: white !important;
+  color: #059705 !important;
+}
+
+.btnIcon {
+  position: absolute;
+  left: 15px;
+}

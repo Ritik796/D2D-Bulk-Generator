@@ -5,48 +5,46 @@ import { GoTrash } from "react-icons/go";
 import { IoTrashOutline } from "react-icons/io5";
 import { GoCheck } from "react-icons/go";
 import style from '../../Styles/MarkSegregation/MarkSegregation.module.css';
-import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction'
-import * as common from '../Common/commonservice'
+import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction';
+import * as common from '../Common/commonservice';
 import { ToastContainer } from "react-toastify";
-import * as bwgDetailSubmit from '../../Services/bwgDeatilSubmit'
+import ModalComponent from './ModalComponent/ModalComponent';
 
-const MarkSegregation = ({ pageData, setPageData }) => {
+const MarkSegregation = ({ pageData, setPageData ,collectorWasteReport,setCollectorWasteReport}) => {
     const [segregationType, setSegregationType] = useState('');
-    const [segregationDetails, setSegregationDetails] = useState({ totalWeight: '', drumWeight: "", wasteWeight: "" })
+    const [isSelected, setIsSelected] = useState(false);
+    const [segregationDone, setSegregationDone] = useState(false);
+    const [segregationDetails, setSegregationDetails] = useState({ totalWeight: '', drumWeight: "", wasteWeight: "" });
     useEffect(() => {
         if (pageData.data) {
-            handleSetData(pageData.data)
+            handleSetData(pageData.data);
         }
         // eslint-disable-next-line
     }, [pageData.data]);
     const handleSetData = (data) => {
-        action.setData(data, setSegregationType, setSegregationDetails)
-    }
+        action.setData(data, setSegregationType, setSegregationDetails, setIsSelected);
+    };
     const handleClick = (value) => {
-        action.markSegregationType(value, setSegregationType, setPageData); // toggle on each click
+        action.markSegregationType(value, setSegregationType, setPageData, setIsSelected); // toggle on each click
     };
 
     const handleDone = () => {
-        if (!segregationType || segregationType.trim() === "") {
-            common.setAlertMessage("error", "Please select a segregation level.");
-            return;
-        }
-        console.log(segregationDetails.drumWeight)
+        action.markSegregationDone(segregationType, setSegregationDone);
         // const houseId = localStorage.getItem('houseId');
         // Android.sendDataToAndroid(houseId);
-        const payload = JSON.stringify({
-            wasteWeight: segregationDetails.wasteWeight,
-            drumWeight: segregationDetails.drumWeight,
-            totalWeight: segregationDetails.totalWeight,
-            wasteType : pageData.data.wasteType,
-            type: segregationType
-        });
+        // const payload = JSON.stringify({
+        //     wasteWeight: segregationDetails.wasteWeight,
+        //     drumWeight: segregationDetails.drumWeight,
+        //     totalWeight: segregationDetails.totalWeight,
+        //     wasteType : pageData.data.wasteType,
+        //     type: segregationType
+        // });
 
-        if (window.Android?.sendDataToAndroid) {
-            window.Android.sendDataToAndroid(payload);
-        } else {
-            console.warn("Android bridge not available");
-        }
+        // if (window.Android?.sendDataToAndroid) {
+        //     window.Android.sendDataToAndroid(payload);
+        // } else {
+        //     console.warn("Android bridge not available");
+        // }
 
         // if (window.Android?.sendDataToAndroid) {
 
@@ -57,6 +55,12 @@ const MarkSegregation = ({ pageData, setPageData }) => {
         // bwgDetailSubmit.submitBWGDetails(houseId,segregationDetails.totalWeight,segregationDetails.drumWeight,segregationDetails.wasteWeight,segregationType)
         // Proceed with your logic if selection is valid
         // action.handleNext(segregationType, setPageData);
+    };
+    const handleAddAnotherWaste = () => {
+        action.addAnotherWaste(setCollectorWasteReport,setPageData,pageData.data,segregationType,segregationDetails,setSegregationDone,setIsSelected);
+    };
+    const handleEndOfWeightment = () => {
+        action.endOfWeightment(setCollectorWasteReport,setPageData,pageData.data,segregationType,segregationDetails,setSegregationDone,setIsSelected);
     };
 
     return (
@@ -145,14 +149,15 @@ const MarkSegregation = ({ pageData, setPageData }) => {
                     </div>
                 </div>
                 <div className={`${style.segregation_btn}`}>
-                    <button onClick={handleDone}>
+                    <button disabled={!isSelected} className={`${isSelected ? "" : style.disabledBtn}`} onClick={handleDone}>
                         <FaCheckCircle className={style.icon} />
                         Done</button>
                 </div>
             </div>
             <ToastContainer position="bottom-right" autoClose={3000} />
+            <ModalComponent open={segregationDone} setOpen={setSegregationDone} handleAddAnotherWaste={handleAddAnotherWaste} handleEndOfWeightment={handleEndOfWeightment} />
         </div>
-    )
-}
+    );
+};
 
-export default MarkSegregation
+export default MarkSegregation;
