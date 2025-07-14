@@ -29,6 +29,7 @@ const MarkSegregation = ({ pageData, setPageData ,collectorWasteReport,setCollec
     };
 
     const handleDone = () => {
+        
         action.markSegregationDone(segregationType, setSegregationDone);
         // const houseId = localStorage.getItem('houseId');
         // Android.sendDataToAndroid(houseId);
