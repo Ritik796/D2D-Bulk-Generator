@@ -53,7 +53,7 @@ const WetWaste = ({ pageData, setPageData, collectorWasteReport, setCollectorWas
             </div>
             <div className={style.buttonContainer}>
                 <button className={style.button} onClick={() => handleAddBin()}>
-                    <IoTrashOutline color='green' className={style.icon}  />
+                    <IoTrashOutline color='green' size={21} className={style.icon}  />
                     Add bin
                 </button>
                 <button className={`${style.buttonPrimary} ${binAdded?'':style.disabledBtn}`} disabled={!binAdded} onClick={handleNext} >
