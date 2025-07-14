@@ -3,34 +3,12 @@ import { FiTrash2, FiTrash } from "react-icons/fi";
 import { TbClipboardText } from "react-icons/tb";
 import { FaCheckCircle } from 'react-icons/fa';
 import style from '../../Styles/CollectedWasteReport/CollectedWasteReport.module.css';
-import { saveBWGData } from "../../Services/bwgDeatilSubmit";
 import { useToastMessage } from "../Common/ToastContainer/ToastContext";
-
+import * as action from '../../Action/Bullkgenerator/CollectedWasteReportAction'
 const CollectedWasteReport = ({ collectorWasteReport, setCollectorWasteReport }) => {
     let { showToastMessage } = useToastMessage();
     const handleSave = async () => {
-        setCollectorWasteReport(pre => ({ ...pre, loading: true }));
-        let res = await saveBWGData(collectorWasteReport.houseId, collectorWasteReport.list, collectorWasteReport.totalWasteCollected);
-        if (res.status === 'success') {
-            let payload = {
-                status: res.status,
-                msg: res.msg
-            };
-            showToastMessage('success', res.msg);
-            window?.Android?.sendDataToAndroid(JSON.stringify(payload));
-            setCollectorWasteReport(pre => ({ ...pre, list: [], houseId: "", totalWasteCollected: 0, reportDate: "", wetWaste: "", dryWaste: "", rejectWaste: "", gardenWaste: "", loading: false }));
-            return;
-        }
-        else {
-            let payload = {
-                status: res.status,
-                msg: res.msg
-            };
-            showToastMessage('error', res.msg);
-            setCollectorWasteReport(pre => ({ ...pre, loading: false }));
-            window?.Android?.sendDataToAndroid(JSON.stringify(payload));
-            return;
-        }
+       action.processBWdData(collectorWasteReport,setCollectorWasteReport,showToastMessage)
     };
     return (
         <div className={`${style.container}`}>
