@@ -22,15 +22,16 @@ const WetWaste = ({ pageData, setPageData, collectorWasteReport, setCollectorWas
     };
     const handleNext = () => {
 
-        if (!weight || isNaN(weight)) {
+        if (!weight || isNaN(weight) || Number(weight) === 0) {
             showToastMessage("error", "Please enter a valid weight greater than 0.");
+            setBinAdded(false);
             return;
         }
 
         action.handleNext(weight, setPageData);
     };
     const handleAddBin = () => {
-        action.addBin(weight, collectorWasteReport, setBinAdded, setPageData, pageData,showToastMessage);
+        action.addBin(weight, collectorWasteReport, setBinAdded, setPageData, pageData, showToastMessage);
     };
     return (
         <div className={`${style.container}`}>
