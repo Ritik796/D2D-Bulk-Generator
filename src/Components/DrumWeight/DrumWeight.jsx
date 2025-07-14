@@ -6,10 +6,12 @@ import { FaWeightScale } from 'react-icons/fa6';
 import * as action from '../../Action/Bullkgenerator/DrumWeightAction';
 import * as common from '../Common/commonservice'
 import { ToastContainer } from "react-toastify";
+import { useToastMessage } from '../Common/ToastContainer/ToastContext';
 
 const DrumWeight = ({ pageData, setPageData }) => {
     const [weight, setWeight] = useState(0);
     const [drumWeight, setDrumWeight] = useState(0);
+        let { showToastMessage } = useToastMessage();
     useEffect(() => {
         if (pageData.data) {
             action.setData(pageData.data, setDrumWeight, drumWeight, setWeight, weight)
@@ -30,7 +32,7 @@ const DrumWeight = ({ pageData, setPageData }) => {
     const handleNext = () => {
 
         if (!drumWeight || isNaN(drumWeight)) {
-            common.setAlertMessage("error", "Please enter a valid drum weight greater than 0.");
+           showToastMessage("error", "Please enter a valid drum weight greater than 0.");
             return;
         }
 

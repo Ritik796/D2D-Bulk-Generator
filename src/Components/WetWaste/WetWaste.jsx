@@ -5,31 +5,32 @@ import { IoTrashOutline } from "react-icons/io5";
 import * as action from '../../Action/Bullkgenerator/WetWasteAction';
 import * as common from '../Common/commonservice';
 import { ToastContainer } from "react-toastify";
+import { useToastMessage } from '../Common/ToastContainer/ToastContext';
 
 const WetWaste = ({ pageData, setPageData, collectorWasteReport, setCollectorWasteReport }) => {
     const [weight, setWeight] = useState('');
-    const [binAdded,setBinAdded] = useState(false);
-
+    const [binAdded, setBinAdded] = useState(false);
+    let { showToastMessage } = useToastMessage();
     useEffect(() => {
         if (pageData.data) {
-            action.setData(pageData.data, setWeight,setBinAdded);
+            action.setData(pageData.data, setWeight, setBinAdded);
         }
         // eslint-disable-next-line
     }, [pageData.data]);
     const handleChange = (value) => {
-        action.handleOnChange(value, setWeight,setBinAdded);
+        action.handleOnChange(value, setWeight, setBinAdded);
     };
     const handleNext = () => {
 
         if (!weight || isNaN(weight)) {
-            common.setAlertMessage("error", "Please enter a valid weight greater than 0.");
+            showToastMessage("error", "Please enter a valid weight greater than 0.");
             return;
         }
 
         action.handleNext(weight, setPageData);
     };
     const handleAddBin = () => {
-        action.addBin(weight,collectorWasteReport,setBinAdded,setPageData,pageData);
+        action.addBin(weight, collectorWasteReport, setBinAdded, setPageData, pageData,showToastMessage);
     };
     return (
         <div className={`${style.container}`}>
@@ -53,10 +54,10 @@ const WetWaste = ({ pageData, setPageData, collectorWasteReport, setCollectorWas
             </div>
             <div className={style.buttonContainer}>
                 <button className={style.button} onClick={() => handleAddBin()}>
-                    <IoTrashOutline color='green' size={21} className={style.icon}  />
+                    <IoTrashOutline color='green' size={21} className={style.icon} />
                     Add bin
                 </button>
-                <button className={`${style.buttonPrimary} ${binAdded?'':style.disabledBtn}`} disabled={!binAdded} onClick={handleNext} >
+                <button className={`${style.buttonPrimary} ${binAdded ? '' : style.disabledBtn}`} disabled={!binAdded} onClick={handleNext} >
                     <FaCheckCircle className={style.icon} />
                     Done
                 </button>

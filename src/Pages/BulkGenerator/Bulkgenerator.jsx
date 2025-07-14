@@ -6,28 +6,24 @@ import MarkSegregation from '../../Components/MarkSegregation/MarkSegregation';
 import DrumWeight from '../../Components/DrumWeight/DrumWeight';
 import WetWaste from '../../Components/WetWaste/WetWaste';
 import CollectedWasteReport from '../../Components/CollectedWasteReport/CollectedWasteReport';
+import Loader from '../../Components/Common/Loader/Loader';
 
 
 const Bulkgenerator = () => {
-  const [pageData, setPageData] = useState({ title: "Waste Type", wasteType: true, wasteWeight: false, drumWeight: false, segregation: false, wasteReport: false, data: {},isUpdate:false });
-  const [houseId, setHouseId] = useState(null);
-  const [collectorWasteReport, setCollectorWasteReport] = useState({ list: [], totalWasteCollected: 0 ,reportDate:"",wetWaste:"",dryWaste:"",rejectWaste:"",gardenWaste:""});
+  const [pageData, setPageData] = useState({ title: "Waste Type", wasteType: true, wasteWeight: false, drumWeight: false, segregation: false, wasteReport: false, data: {}, isUpdate: false });
+  const [collectorWasteReport, setCollectorWasteReport] = useState({ list: [], houseId: "", totalWasteCollected: 0, reportDate: "", wetWaste: "", dryWaste: "", rejectWaste: "", gardenWaste: "", loading: false });
 
   useEffect(() => {
-    window.receiveMessage = (message) => {
-      console.log("Message from Android:", message);
-      // localStorage.setItem('houseId',message)
-      // localStorage.setItem('city','Test')
-      setHouseId(message);
+    window.receiveMessage = (houseId) => {
+      setCollectorWasteReport(pre => ({ ...pre, houseId: houseId }));
     };
-
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className={`${style.container}`}>
       <div>
         <Header title={pageData.title} setPageData={setPageData} />
-        <label>{houseId}</label>
       </div>
       <div>
         {pageData.wasteType ? (
@@ -38,6 +34,7 @@ const Bulkgenerator = () => {
               (<MarkSegregation pageData={pageData} setPageData={setPageData} collectorWasteReport={collectorWasteReport} setCollectorWasteReport={setCollectorWasteReport} />)
               : pageData.wasteReport ? (<CollectedWasteReport collectorWasteReport={collectorWasteReport} setCollectorWasteReport={setCollectorWasteReport} />) : null}
       </div>
+      {collectorWasteReport.loading && (<Loader />)}
     </div>
   );
 };

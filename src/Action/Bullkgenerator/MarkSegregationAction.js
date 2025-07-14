@@ -1,5 +1,4 @@
 import moment from 'moment';
-import * as common from '../../Components/Common/commonservice';
 export const setData = (data, setSegregationType, setSegregationDetails, setIsSelected) => {
     setSegregationType(data?.segregationType || "");
     setSegregationDetails((pre) => {
@@ -23,9 +22,9 @@ export const markSegregationType = (value, setSegregationType, setPageData, setI
     setIsSelected(true);
 };
 
-export const markSegregationDone = (segregationType, setSegregationDone) => {
+export const markSegregationDone = (segregationType, setSegregationDone,showToastMessage) => {
     if (!segregationType || segregationType.trim() === "") {
-        common.setAlertMessage("error", "Please select a segregation level.");
+       showToastMessage("error", "Please select a segregation level.");
         return;
     }
     setSegregationDone(true);

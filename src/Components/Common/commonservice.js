@@ -54,3 +54,7 @@ export const getCurrentDate = () => {
   let month = moment().format('MMMM');
   return { date, month, year };
 };
+
+export const setResponse = (status, msg, data) => {
+  return { status, msg, data: data ? data : {} };
+};

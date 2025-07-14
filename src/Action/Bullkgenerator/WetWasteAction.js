@@ -21,9 +21,9 @@ export const setData = (data, setWeight, setBinAdded) => {
     setBinAdded(data?.wasteWeight ? true : false);
 };
 
-export const addBin = (weight, collectorWasteReport, setBinAdded, setPageData,data) => {
+export const addBin = (weight, collectorWasteReport, setBinAdded, setPageData,data,showToastMessage) => {
     if (!weight) {
-        common.setAlertMessage('error', 'Please enter a valid weight greater than 0.');
+        showToastMessage('error', 'Please enter a valid weight greater than 0.');
         return;
     }
     if (data.binId) {

@@ -6,15 +6,16 @@ import { IoTrashOutline } from "react-icons/io5";
 import { GoCheck } from "react-icons/go";
 import style from '../../Styles/MarkSegregation/MarkSegregation.module.css';
 import * as  action from '../../Action/Bullkgenerator/MarkSegregationAction';
-import * as common from '../Common/commonservice';
 import { ToastContainer } from "react-toastify";
 import ModalComponent from './ModalComponent/ModalComponent';
+import { useToastMessage } from '../Common/ToastContainer/ToastContext';
 
 const MarkSegregation = ({ pageData, setPageData ,collectorWasteReport,setCollectorWasteReport}) => {
     const [segregationType, setSegregationType] = useState('');
     const [isSelected, setIsSelected] = useState(false);
     const [segregationDone, setSegregationDone] = useState(false);
     const [segregationDetails, setSegregationDetails] = useState({ totalWeight: '', drumWeight: "", wasteWeight: "" });
+    let { showToastMessage } = useToastMessage();
     useEffect(() => {
         if (pageData.data) {
             handleSetData(pageData.data);
@@ -30,7 +31,7 @@ const MarkSegregation = ({ pageData, setPageData ,collectorWasteReport,setCollec
 
     const handleDone = () => {
         
-        action.markSegregationDone(segregationType, setSegregationDone);
+        action.markSegregationDone(segregationType, setSegregationDone,showToastMessage);
         // const houseId = localStorage.getItem('houseId');
         // Android.sendDataToAndroid(houseId);
         // const payload = JSON.stringify({
