@@ -4,7 +4,6 @@ import { FaCheckCircle } from 'react-icons/fa';
 import { GoTrash } from "react-icons/go";
 import { FaWeightScale } from 'react-icons/fa6';
 import * as action from '../../Action/Bullkgenerator/DrumWeightAction';
-import * as common from '../Common/commonservice'
 import { ToastContainer } from "react-toastify";
 import { useToastMessage } from '../Common/ToastContainer/ToastContext';
 

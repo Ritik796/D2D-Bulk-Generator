@@ -3,7 +3,6 @@ import style from '../../Styles/WetWaste/WetWaste.module.css';
 import { FaCheckCircle } from 'react-icons/fa'; // Font Awesome icons
 import { IoTrashOutline } from "react-icons/io5";
 import * as action from '../../Action/Bullkgenerator/WetWasteAction';
-import * as common from '../Common/commonservice';
 import { ToastContainer } from "react-toastify";
 import { useToastMessage } from '../Common/ToastContainer/ToastContext';
 

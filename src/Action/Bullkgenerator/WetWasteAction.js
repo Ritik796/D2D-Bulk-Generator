@@ -1,4 +1,4 @@
-import * as common from '../../Components/Common/commonservice';
+
 export const handleOnChange = (value, setWeight, setBinAdded) => {
     setWeight(value);
 };
