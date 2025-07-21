@@ -30,7 +30,7 @@ const WetWaste = ({ pageData, setPageData, collectorWasteReport, setCollectorWas
         action.handleNext(weight, setPageData);
     };
     const handleAddBin = () => {
-        action.addBin(weight, collectorWasteReport, setBinAdded, setPageData, pageData, showToastMessage);
+        action.addBin(weight, collectorWasteReport, setBinAdded, setPageData, pageData.data, showToastMessage);
     };
     return (
         <div className={`${style.container}`}>
