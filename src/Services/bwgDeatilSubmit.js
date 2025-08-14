@@ -5,6 +5,7 @@ import { getCurrentDatabase } from "../Firebase";
 let failStatus = 'fail';
 let successStatus = 'success';
 let testUrl = 'https://dtdnavigatortesting.firebaseio.com/';
+let totalDrumWeight = 0;
 // let databaseUrl = `https://dtdecogram.firebaseio.com/`
 export const submitBWGDetails = async (houseId, totalWeight, drumWeight, wasteWeight, segregationLevel) => {
 
@@ -45,14 +46,14 @@ export const submitBWGDetails = async (houseId, totalWeight, drumWeight, wasteWe
  */
 export const saveBWGData = async (houseId, bwgData, totalWasteCollected) => {
     try {
-        if (!houseId || bwgData.length === 0  || !totalWasteCollected) {
+        if (!houseId || bwgData.length === 0 || !totalWasteCollected) {
             return common.setResponse(failStatus, 'Invalid Params !!!', {
                 service: "saveBWGData",
                 params: { houseId, bwgData, totalWasteCollected }
             });
         }
-        let database  = getCurrentDatabase(testUrl)
-        let cardDetails = await db.getData(`/CardWardMapping/${houseId}`,database);
+        let database = getCurrentDatabase(testUrl)
+        let cardDetails = await db.getData(`/CardWardMapping/${houseId}`, database);
         if (!cardDetails) {
             return common.setResponse(failStatus, 'CardDetails not found', {
                 service: "saveBWGData",
@@ -65,23 +66,25 @@ export const saveBWGData = async (houseId, bwgData, totalWasteCollected) => {
         // Save individual BWG entries
         const bwgPromises = bwgData.map((bwg, index) => {
             let data = {
-                drumWeight: bwg?.drumWeight|| "",
-                segregationLevel: bwg?.segregationType ||"",
-                totalWeight: bwg?.totalWeight||"",
-                wasteType: bwg?.wasteType|| "",
-                wasteWeight: bwg?.wasteWeight|| "",
+                drumWeight: bwg?.drumWeight || "",
+                segregationLevel: bwg?.segregationType || "",
+                totalWeight: bwg?.totalWeight || "",
+                wasteType: bwg?.wasteType || "",
+                wasteWeight: bwg?.wasteWeight || "",
             };
+            const weight = parseFloat(bwg?.drumWeight || 0);
+            totalDrumWeight += isNaN(weight) ? 0 : weight;
 
             return db.saveData(
                 `/HousesCollectionInfo/${cardDetails.ward}/${year}/${month}/${date}/${houseId}/BWGData/${index + 1}`,
-                data,database
+                data, database
             );
         });
 
         // Also save totalWasteCollected
         const totalWastePromise = db.saveData(
             `/HousesCollectionInfo/${cardDetails.ward}/${year}/${month}/${date}/${houseId}/BWGData/`,
-            { totalWasteCollection: totalWasteCollected },
+            { totalWasteCollection: totalWasteCollected, totalDrumWeight: totalDrumWeight},
             database
         );
 
